@@ -1,4 +1,3 @@
-
 '''
 Functia primeste unu numar intreg.
 Funcita returneaza True daca numarul introdus este prim,sau false in caz contrar.
@@ -218,10 +217,10 @@ Functia centrala care preia datele,si creeaza un meniu pentru utilizator.
 '''
 
 def main():
-    print('1.   Ultimul numar prim mai mic decat un numar dat.')
-    print('2.   Varsta persoanei in zile.')
-    print('x    Exit')
     while True:
+        print('1.   Ultimul numar prim mai mic decat un numar dat.')
+        print('2.   Varsta persoanei in zile.')
+        print('x    Exit')
         optiune = input('Introduceti optiunea: ')
         if optiune == '1':
              x = int(input('Introduceti numarul: '))
@@ -243,12 +242,3 @@ def main():
             print('Optiune invalida !')
 
 main()
-
-                
-                
-
-
-
-    
-    
-
