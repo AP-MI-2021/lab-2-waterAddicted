@@ -213,6 +213,37 @@ def test_get_age_in_days():
     assert(get_age_in_days((21,7,2005))>=5918)
 
 '''
+Input: un numar natural
+Output:un tuple de doua numere prime ale caror suma este egala cu n,in cazul in care exista;sau folse daca acest lucru nu este realizabil(!numerele prime fiind luand maxima respectiva valoarea minima)
+'''
+
+def get_goldbach(n):
+    st = 2
+    while numar_prim(n-st) == False or numar_prim(st) == False :
+        st += 1
+        if st > n:
+            break
+    if (st > n):
+        return False
+    return(st,n-st)
+
+'''
+Testarea functie goldbach pe niste exemple concrete'''
+
+def test_get_goldbach():
+    lst = [1,2]
+    lst = get_goldbach(19)
+    assert(lst[0] == 2 and lst[1] == 17)
+    lst = [1,2]
+    lst = get_goldbach(16)
+    assert(lst[0] == 3 and lst[1] == 13)
+    lst = [1,2]
+    lst = get_goldbach(19)
+    assert(lst == False)
+
+
+
+'''
 Functia centrala care preia datele,si creeaza un meniu pentru utilizator.
 '''
 
@@ -220,6 +251,7 @@ def main():
     while True:
         print('1.   Ultimul numar prim mai mic decat un numar dat.')
         print('2.   Varsta persoanei in zile.')
+        print('3.   Doua numere prime (minim respectiv maxim posibl) ale caror suma sa fie egala cu un numar introdus.')
         print('x    Exit')
         optiune = input('Introduceti optiunea: ')
         if optiune == '1':
@@ -236,6 +268,19 @@ def main():
             data_nastere[2] = int(input('Intoruceti anul nasterii: '))
             print(f'Varsta persoanei care s-a nascut in {data_nastere[0]}.{data_nastere[1]}.{data_nastere[2]} este de: ',get_age_in_days(data_nastere),' zile.')
             test_get_age_in_days()
+        elif optiune == '3':
+            x = int(input('Introduceti numarul:'))
+            if x <= 2:
+                print (f'Nu exista numere prime ale caror suna sa fie egala cu {x}')
+            else:
+                rez = [1,1]
+                rez = get_goldbach(x)
+                if not rez:
+                    print (f'Nu exista numere prime ale caror suna sa fie egala cu {x}')
+                else:
+                    print(f'Cele doua numere prime ale caror suma este egala cu {x} sunt {rez[0]} si {rez[1]}')
+            test_get_goldbach()
+
         elif optiune == 'x':
             break
         else:
